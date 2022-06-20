@@ -5,6 +5,7 @@ import rocket from "./images/rocket.png";
 import beach from "./images/beach.jpg";
 import greenBackground from "./images/green-bg.jpg";
 import { useState } from "react";
+import Cards from "./components/Cards";
 
 function App() {
   const [images, setImages] = useState([
@@ -23,16 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      {images.map((image, index) => {
-        return (
-          <img
-            key={index}
-            src={image}
-            alt=""
-            onClick={(e) => shuffle(images)}
-          />
-        );
-      })}
+      <Cards images={images} shuffle={shuffle} />
     </div>
   );
 }
