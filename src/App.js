@@ -43,6 +43,10 @@ function App() {
   };
 
   useEffect(() => {
+    shuffle(images);
+  }, []);
+
+  useEffect(() => {
     if (containsDuplicates(imageArray)) {
       resetGame();
     }
