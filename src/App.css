@@ -24,9 +24,20 @@
   color: white;
 }
 
+body {
+  background-color: #ecb365;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
 img {
   height: 300px;
   width: 300px;
+  border-radius: 12px;
 }
 
 .App-link {
