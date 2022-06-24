@@ -7,6 +7,7 @@ import greenBackground from "./images/green-bg.jpg";
 import { useEffect, useState } from "react";
 import Cards from "./components/Cards";
 import Scoreboard from "./components/Scoreboard";
+import BestScore from "./components/BestScore";
 
 function App() {
   const [images, setImages] = useState([
@@ -19,17 +20,24 @@ function App() {
 
   const [imageArray, setImageArray] = useState([]);
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   const resetGame = () => {
     setImageArray([]);
     setScore(0);
   };
 
-  function containsDuplicates(arr) {
+  const checkBestScore = (arr) => {
+    if (bestScore < arr.length) {
+      setBestScore(arr.length - 1);
+    }
+  };
+
+  const containsDuplicates = (arr) => {
     return arr.some(function (item) {
       return arr.indexOf(item) !== arr.lastIndexOf(item);
     });
-  }
+  };
 
   const getImage = (e) => {
     let newArray = [e.target.currentSrc];
@@ -48,6 +56,7 @@ function App() {
 
   useEffect(() => {
     if (containsDuplicates(imageArray)) {
+      checkBestScore(imageArray);
       resetGame();
     }
   }, [imageArray]);
@@ -55,6 +64,7 @@ function App() {
   return (
     <div className="App">
       <Scoreboard score={score} />
+      <BestScore bestScore={bestScore} />
       <Cards images={images} shuffle={shuffle} getImage={getImage} />
     </div>
   );
