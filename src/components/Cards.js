@@ -2,14 +2,18 @@ import React from "react";
 
 const Cards = (props) => {
   return (
-    <div>
+    <div className="cards">
       {props.images.map((image, index) => {
         return (
           <img
+            className="card-img"
             key={index}
             src={image}
             alt=""
-            onClick={(e) => props.shuffle(props.images)}
+            onClick={(event) => {
+              props.getImage(event);
+              props.shuffle(props.images);
+            }}
           />
         );
       })}
