@@ -58,6 +58,10 @@ function App() {
     if (containsDuplicates(imageArray)) {
       checkBestScore(imageArray);
       resetGame();
+    } else if (score === 5) {
+      alert(`You win with a score of ${score}`);
+      setBestScore(score);
+      resetGame();
     }
   }, [imageArray]);
 
